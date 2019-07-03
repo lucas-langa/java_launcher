@@ -1,10 +1,13 @@
-public class Aircraft{
+public abstract class Aircraft{
 	protected long 			id;
 	protected String 		name;
 	protected Coordinates 	coordinates;
 	private long			idCounter;
 
-	public			 Aircraft( String name, Coordinates coordinates ) {
+	protected			 Aircraft( String name, Coordinates coordinates ) {
+		this.name = name;
+		this.coordinates = coordinates;
+		System.out.println("new Aircraft Spawned" + this.name );
 		return ;
 	}
 
