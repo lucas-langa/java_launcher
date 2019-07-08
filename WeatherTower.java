@@ -4,7 +4,10 @@ public class WeatherTower extends Tower{
 		return ("SUN");
 	}
 
-	
+	public void changeWeather( ) {
+		
+	}
+                                                                                                                                                                                   
 	/*
 	** changeWeather
 	*/
