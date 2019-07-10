@@ -1,5 +1,5 @@
 package za.co.wethinkcode;
-
+import za.co.wethinkcode.coordinates.Coordinates;
 public class JetPlane extends Aircraft implements Flyable{
 	private WeatherTower weatherTower;
 

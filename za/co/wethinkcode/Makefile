@@ -1,26 +1,26 @@
-SRC = Aircraft.java\
-AircraftFactory.java\
-AircraftTest.java\
-Baloon.java\
-Coordinates.java\
-Flyable.java\
-Helicopter.java\
-JetPlane.java\
-Tower.java\
-WeatherProvider.java\
-WeatherTower.java
+SRC = 	AircraftTest.java\
+		Aircraft.java\
+		AircraftFactory.java\
+		Baloon.java\
+		./coordinates/Coordinates.java\
+		Flyable.java\
+		Helicopter.java\
+		JetPlane.java\
+		Tower.java\
+		./weather/WeatherProvider.java\
+		WeatherTower.java
 
-OBJ = Aircraft.class\
-AircraftFactory.class\
-AircraftTest.class\
-Baloon.class\
-Coordinates.class\
-Flyable.class\
-Helicopter.class\
-JetPlane.class\
-Tower.class\
-WeatherProvider.class\
-WeatherTower.class
+OBJ = 	AircraftTest.class\
+		Aircraft.class\
+		AircraftFactory.class\
+		Baloon.class\
+		./coordinates/Coordinates.class\
+		Flyable.class\
+		Helicopter.class\
+		JetPlane.class\
+		Tower.class\
+		./weather/WeatherProvider.class\
+		WeatherTower.class
 
 
 all : $(OBJ)

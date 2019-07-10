@@ -1,4 +1,4 @@
-package za.co.wethinkcode;
+package za.co.wethinkcode.coordinates;
 
 public class 	Coordinates {
 	private int		longitude;
@@ -11,10 +11,6 @@ public class 	Coordinates {
 		this.height = (height >= 0) ? height : 0;
 		return ;
 	}
-
-	/*
-	* adding getters coz of private instance vars
-	*/
 
 	public	int 		getLatitude( ) {
 		return ( this.latitude );
