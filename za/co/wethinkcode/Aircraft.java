@@ -1,5 +1,6 @@
 package za.co.wethinkcode;
 import za.co.wethinkcode.coordinates.Coordinates;
+
 public abstract class Aircraft{
 	protected long 			id;
 	protected String 		name;
@@ -14,6 +15,7 @@ public abstract class Aircraft{
 	}
 
 	public long 	nextId( ) {
+		this.id = ;
 		return (0);
 	}
 }

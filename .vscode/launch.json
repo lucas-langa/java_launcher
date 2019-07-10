@@ -4,6 +4,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - AircraftTest",
             "request": "launch",
+            "mainClass": "za.co.wethinkcode.AircraftTest",
+            "projectName": "java_launcher_2da66447"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - AircraftTest",
+            "request": "launch",
             "mainClass": "AircraftTest",
             "projectName": "java_launcher_2da66447"
         }
