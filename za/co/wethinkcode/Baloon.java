@@ -1,3 +1,5 @@
+package za.co.wethinkcode;
+
 public class Baloon extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 
@@ -26,7 +28,7 @@ public class Baloon extends Aircraft implements Flyable {
 	}
 
 	public void 	registerTower( WeatherTower  weatherTower ) {
-		System.out.println("Updating balloon registertower");
+		this.weatherTower.register( this );
 		return ;
 	}
 }

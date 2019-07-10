@@ -1,20 +1,21 @@
+package za.co.wethinkcode.weather;
+import za.co.wethinkcode.Coordinates;
+
 public class WeatherProvider {
 
 	private static WeatherProvider weatherProvider = new WeatherProvider();
 	private static String[] weather = { "SUN", "SNOW", "RAIN", "FOG" };
 
-	private 	WeatherProvider() {
+	private 	WeatherProvider() { 
 	}
 
 	public static WeatherProvider 	getProvider( ) {
-		if ( weatherProvider == null ){
-			return ( weatherProvider.weatherProvider );
-		}
+		return ( WeatherProvider.weatherProvider );
 	}
 
-	private static String 	getCurrentWeather( Coordinates coordinates ) {
+	public String 	getCurrentWeather( Coordinates coordinates ) {
 		int w = ( coordinates.getHeight() + coordinates.getLatitude() + coordinates.getLongitude() ) % 5;
-		if (w < 5)
+		if ( w < 5 )
 			return ( weather[1] );
 		if ( w < 10 )
 			return ( weather[3] );

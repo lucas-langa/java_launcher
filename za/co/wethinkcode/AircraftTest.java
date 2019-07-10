@@ -1,3 +1,4 @@
+
 public class AircraftTest {
 	public static void 	main(String [] args) {
 		Coordinates place = new  Coordinates(2 ,3, 20);

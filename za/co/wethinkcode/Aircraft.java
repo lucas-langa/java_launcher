@@ -1,3 +1,5 @@
+package za.co.wethinkcode;
+
 public abstract class Aircraft{
 	protected long 			id;
 	protected String 		name;
