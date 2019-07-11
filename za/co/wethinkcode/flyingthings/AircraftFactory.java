@@ -1,5 +1,5 @@
-package za.co.wethinkcode;
-import za.co.wethinkcode.coordinates.Coordinates;
+package za.co.wethinkcode.flyingthings;
+import za.co.wethinkcode.Flyable;
 
 public abstract class AircraftFactory {
 

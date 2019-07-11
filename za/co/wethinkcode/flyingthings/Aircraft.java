@@ -1,13 +1,13 @@
-package za.co.wethinkcode;
-import za.co.wethinkcode.coordinates.Coordinates;
+package za.co.wethinkcode.flyingthings;
 
 public abstract class Aircraft{
-	protected long 			id;
-	protected String 		name;
-	protected Coordinates 	coordinates;
-	private long			idCounter;
+	protected long 				id;
+	protected String 			name;
+	protected Coordinates 		coordinates;
+	private static long			idCounter = 1;
 
 	protected			 Aircraft( String name, Coordinates coordinates ) {
+		this.id = this.nextId();
 		this.name = name;
 		this.coordinates = coordinates;
 		System.out.println("new Aircraft Spawned" + this.name );
@@ -15,7 +15,6 @@ public abstract class Aircraft{
 	}
 
 	public long 	nextId( ) {
-		this.id = ;
-		return (0);
+		return ( Aircraft.idCounter++ );
 	}
 }

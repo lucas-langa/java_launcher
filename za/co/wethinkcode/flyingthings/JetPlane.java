@@ -1,12 +1,14 @@
-package za.co.wethinkcode;
-import za.co.wethinkcode.coordinates.Coordinates;
+package za.co.wethinkcode.flyingthings;
+import za.co.wethinkcode.Flyable;
+import za.co.wethinkcode.weather.WeatherTower;
+
 public class JetPlane extends Aircraft implements Flyable{
 	private WeatherTower weatherTower;
 
 	/*
 	* constructor when packages
 	*/
-	public 			JetPlane( String name, Coordinates coordinates ) {
+	JetPlane( String name, Coordinates coordinates ) {
 		super( name, coordinates );
 	}
 

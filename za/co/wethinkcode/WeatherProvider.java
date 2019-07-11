@@ -1,5 +1,5 @@
-package za.co.wethinkcode.weather;
-import za.co.wethinkcode.coordinates.Coordinates;
+package za.co.wethinkcode;
+import za.co.wethinkcode.flyingthings.Coordinates;
 
 public class WeatherProvider {
 

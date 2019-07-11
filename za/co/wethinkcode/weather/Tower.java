@@ -1,4 +1,5 @@
-package za.co.wethinkcode;
+package za.co.wethinkcode.weather;
+import za.co.wethinkcode.Flyable;
 import java.util.ArrayList;
 
 public abstract class Tower {

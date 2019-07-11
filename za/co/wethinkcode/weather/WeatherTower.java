@@ -1,6 +1,7 @@
-package za.co.wethinkcode;
-import za.co.wethinkcode.weather.WeatherProvider;
-import za.co.wethinkcode.coordinates.Coordinates;
+package za.co.wethinkcode.weather;
+import za.co.wethinkcode.WeatherProvider;
+import za.co.wethinkcode.flyingthings.Coordinates;
+
 public class WeatherTower extends Tower{
 	
 	public String 	getWeather( Coordinates coordinates ) {
@@ -8,7 +9,7 @@ public class WeatherTower extends Tower{
 		return ( meh.getCurrentWeather( coordinates ) );
 	}
 
-	public void changeWeather( ) {
+	void changeWeather( ) {
 		this.conditionsChanged();
 	}
 }
