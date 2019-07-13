@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Simulator {
 	public static PrintWriter writer;
+	public static int runSim;
 	public static String AircraftValidator( String[] data ) {
         if ( data[0].equals("Baloon") || data[0].equals("Helicopter") || data[0].equals("JetPlane") )
         {
@@ -52,32 +53,51 @@ public class Simulator {
     }
 	public static void 	main(String [] args) throws Exception {
 		if ( args[0].length() > 0 ) {
-			String data = Simulator.readStuff( args[0] );
-			
-			ArrayList<String> strings = new ArrayList<String>();
-			String[] lines = data.split("\n", 0);
-			String []temp;
-			for ( String aircraft  : lines )
-				strings.add( aircraft );
-			strings.remove(0);
-			int []flyDigits = new int[3];
-			String AircraftName = new String("");
-			String Aircraft = new String("");
-			WeatherTower W = new WeatherTower();
-			ArrayList<Flyable> F = new ArrayList<Flyable>();
-			Coordinates place;
-			for ( String listItem : strings ) {
-				temp = listItem.split( " ", 0 );
-				Aircraft = Simulator.AircraftValidator( temp );
-				AircraftName = Simulator.NameValidator( temp[1] );
-				flyDigits = Simulator.CoordinatesValidator( temp );
-				place = new Coordinates( flyDigits[0] , flyDigits[1], flyDigits[2] );
-				F.add( AircraftFactory.newAircraft( Aircraft, AircraftName, place.getLongitude(), place.getLatitude(), place.getHeight()) );
-			}
-			for ( Flyable  vehicles : F) {
-				vehicles.registerTower( W );
-				vehicles.updateConditions();
-			}
-		}
+			try{
+
+					String data = Simulator.readStuff( args[0] );
+					try {
+						File filename = new File("simulation.txt");
+						filename.createNewFile();
+						if ( filename.exists() && filename.isFile() )
+						{
+							ArrayList<String> strings = new ArrayList<String>();
+							String[] lines = data.split("\n", 0);
+							String []temp;
+							for ( String aircraft  : lines )
+								strings.add( aircraft );
+							Integer.parseInt(lines[0]);
+							strings.remove(0);
+							int []flyDigits = new int[3];
+							String AircraftName = new String("");
+							String Aircraft = new String("");
+							WeatherTower W = new WeatherTower();
+							ArrayList<Flyable> F = new ArrayList<Flyable>();
+							Coordinates place;
+							for ( String listItem : strings ) {
+								temp = listItem.split( " ", 0 );
+								Aircraft = Simulator.AircraftValidator( temp );
+								AircraftName = Simulator.NameValidator( temp[1] );
+								flyDigits = Simulator.CoordinatesValidator( temp );
+								place = new Coordinates( flyDigits[0] , flyDigits[1], flyDigits[2] );
+								F.add( AircraftFactory.newAircraft( Aircraft, AircraftName, place.getLongitude(), place.getLatitude(), place.getHeight()) );
+							}
+							for ( Flyable  vehicles : F) {
+								System.out.println(vehicles);
+								try {
+									vehicles.registerTower( W );
+									vehicles.updateConditions();
+								} catch (NullPointerException e){
+									System.out.println(e.getMessage());
+								}
+							}
+						}
+						}catch(IOException e) {
+							System.out.println( e.getMessage() );
+						}	
+				} catch (FileNotFoundException e) {
+					System.out.println( e.getMessage() );
+				}
+				}
 	}
 }

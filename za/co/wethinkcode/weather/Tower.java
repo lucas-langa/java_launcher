@@ -1,6 +1,7 @@
 package za.co.wethinkcode.weather;
 import za.co.wethinkcode.Flyable;
 import java.util.ArrayList;
+import za.co.wethinkcode.Simulator;
 
 public abstract class Tower {
 
@@ -10,7 +11,7 @@ public abstract class Tower {
 		if ( !(this.observers.contains( flyable )) )
 		{
 			this.observers.add( flyable );
-			System.out.println( flyable + " registered to weather tower");
+			Simulator.writer.println( flyable + " registered to weather tower");
 		}
 		return ;
 	}
@@ -18,10 +19,10 @@ public abstract class Tower {
 	public void		unregister( Flyable flyable ) {
 		if ( this.observers.contains( flyable )) {
 			this.observers.remove( flyable );
-			System.out.println( flyable + " unregistered to weather tower");
+			Simulator.writer.println( flyable + " unregistered to weather tower");
 		}
 		else {
-			System.out.println("I see none of this kind registered to the Tower");
+			Simulator.writer.println("I see none of this kind registered to the Tower");
 		}
 
 		return ;
