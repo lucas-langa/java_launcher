@@ -15,6 +15,7 @@ public class JetPlane extends Aircraft implements Flyable{
 	public void 	updateConditions( ) {
 		String currentWeather = this.weatherTower.getWeather( this.coordinates );
 
+		System.out.println("changing from these Coordinates:  " + this.coordinates );
 		if ( currentWeather.equals("SUN") ) {
 			coordinates = new Coordinates(coordinates.getLongitude() , coordinates.getLatitude() + 10, coordinates.getHeight() + 2 );
 		} else if ( currentWeather.equals("RAIN")) {
@@ -24,6 +25,8 @@ public class JetPlane extends Aircraft implements Flyable{
 		} else if ( currentWeather.equals("SNOW") ) {
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 7);
 		}
+		System.out.println("To these: " + this.coordinates );
+		System.out.println( "Updating balloon conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
 		return ;
 	}
 

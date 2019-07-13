@@ -14,14 +14,16 @@ public class WeatherProvider {
 	}
 
 	public String 	getCurrentWeather( Coordinates coordinates ) {
-		int w = ( coordinates.getHeight() + coordinates.getLatitude() + coordinates.getLongitude() ) % 4;
-		if ( w < 5 )
+		double w = Math.random() * (( coordinates.getHeight() + coordinates.getLatitude() + coordinates.getLongitude() ) % 21);
+		int x = (int)w;
+
+		if ( x < 5 )
 			return ( weather[1] );
-		if ( w < 10 )
+		if ( x < 10 )
 			return ( weather[3] );
-		if ( w < 15 )
+		if ( x < 15 )
 			return ( weather[2] );
-		if ( w < 20 )
+		if ( x < 20 )
 			return ( weather[0] );
 		return (" ");
 	}

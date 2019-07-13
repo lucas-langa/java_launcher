@@ -16,8 +16,9 @@ public class Baloon extends Aircraft implements Flyable {
 		this.weatherTower = new WeatherTower();
 		String currentWeather = weatherTower.getWeather( this.coordinates );
 
+		System.out.println("changing from these Coordinates:  " + this.coordinates );
 		if ( currentWeather.equals("SUN") ) {
-			coordinates = new Coordinates(coordinates.getLongitude() + 2, coordinates.getLatitude() , coordinates.getHeight() + 4 );
+			coordinates = new Coordinates( coordinates.getLongitude() + 2, coordinates.getLatitude() , coordinates.getHeight() + 4 );
 		} else if ( currentWeather.equals("RAIN")) {
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude() , coordinates.getHeight() - 5);
 		} else if ( currentWeather.equals("FOG") ) {
@@ -25,10 +26,11 @@ public class Baloon extends Aircraft implements Flyable {
 		} else if ( currentWeather.equals("SNOW") ) {
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 15);
 		}
-		System.out.println("Updating balloon conditions");
+		System.out.println("To these: " + this.coordinates );
+		System.out.println( "Updating balloon conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
 		return ;
 	}
-
+	
 	public void 	registerTower( WeatherTower  weatherTower ) {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register( this );

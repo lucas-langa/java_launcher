@@ -14,6 +14,11 @@ public abstract class Aircraft{
 		return ;
 	}
 
+	@Override
+	public String toString() {
+		return ( this.name + "#" + this.id );
+	}
+
 	public long 	nextId( ) {
 		return ( Aircraft.idCounter++ );
 	}

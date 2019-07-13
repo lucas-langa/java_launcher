@@ -1,5 +1,5 @@
 ./za/co/wethinkcode/WeatherProvider.java
-./za/co/wethinkcode/AircraftTest.java
+./za/co/wethinkcode/Simulator.java
 ./za/co/wethinkcode/weather/WeatherTower.java
 ./za/co/wethinkcode/weather/Tower.java
 ./za/co/wethinkcode/Flyable.java
