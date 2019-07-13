@@ -26,7 +26,7 @@ public class JetPlane extends Aircraft implements Flyable{
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 7);
 		}
 		System.out.println("To these: " + this.coordinates );
-		System.out.println( "Updating balloon conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
+		System.out.println( "Updating JetPlane " + this.name + " conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
 		return ;
 	}
 

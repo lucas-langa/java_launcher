@@ -8,9 +8,9 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class Simulator {
-
+	public static PrintWriter writer;
 	public static String AircraftValidator( String[] data ) {
-        if ( data[0].equals("Baloon") || data[0].equals("Helicopter") || data[0].equals("JetPlane"))
+        if ( data[0].equals("Baloon") || data[0].equals("Helicopter") || data[0].equals("JetPlane") )
         {
             return ( data[0] );
         }
@@ -51,31 +51,33 @@ public class Simulator {
         return (res);
     }
 	public static void 	main(String [] args) throws Exception {
-
-		String data = Simulator.readStuff( args[0] );
-        ArrayList<String> strings = new ArrayList<String>();
-        String[] lines = data.split("\n", 0);
-        String []temp;
-        for ( String aircraft  : lines )
-			strings.add( aircraft );
-		strings.remove(0);
-		int []flyDigits = new int[3];
-		String AircraftName = new String("");
-		String Aircraft = new String("");
-		WeatherTower W = new WeatherTower();
-		// Flyable F;
-		Coordinates place;
-        for ( String listItem : strings )
-        {
-			temp = listItem.split( " ", 0 );
-            System.out.println( Aircraft = Simulator.AircraftValidator( temp ) );
-            System.out.println( AircraftName = Simulator.NameValidator( temp[1] ) );
-			System.out.println( flyDigits = Simulator.CoordinatesValidator( temp ) );
-			// break;
-			place = new Coordinates( flyDigits[0] , flyDigits[1], flyDigits[2] );
-			Flyable F = AircraftFactory.newAircraft( Aircraft, AircraftName, place.getLongitude(), place.getLatitude(), place.getHeight());
-			// F.registerTower( W );
-			F.updateConditions(); 
-        }
+		if ( args[0].length() > 0 ) {
+			String data = Simulator.readStuff( args[0] );
+			
+			ArrayList<String> strings = new ArrayList<String>();
+			String[] lines = data.split("\n", 0);
+			String []temp;
+			for ( String aircraft  : lines )
+				strings.add( aircraft );
+			strings.remove(0);
+			int []flyDigits = new int[3];
+			String AircraftName = new String("");
+			String Aircraft = new String("");
+			WeatherTower W = new WeatherTower();
+			ArrayList<Flyable> F = new ArrayList<Flyable>();
+			Coordinates place;
+			for ( String listItem : strings ) {
+				temp = listItem.split( " ", 0 );
+				Aircraft = Simulator.AircraftValidator( temp );
+				AircraftName = Simulator.NameValidator( temp[1] );
+				flyDigits = Simulator.CoordinatesValidator( temp );
+				place = new Coordinates( flyDigits[0] , flyDigits[1], flyDigits[2] );
+				F.add( AircraftFactory.newAircraft( Aircraft, AircraftName, place.getLongitude(), place.getLatitude(), place.getHeight()) );
+			}
+			for ( Flyable  vehicles : F) {
+				vehicles.registerTower( W );
+				vehicles.updateConditions();
+			}
+		}
 	}
 }

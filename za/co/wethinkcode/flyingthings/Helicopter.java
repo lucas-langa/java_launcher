@@ -26,7 +26,7 @@ public class 	Helicopter extends Aircraft implements Flyable{
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 12);
 		}
 		System.out.println("To these: " + this.coordinates );
-		System.out.println( "Updating balloon conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
+		System.out.println( "Updating Helicopter " + this.name + " conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
 		return ;
 	}
 

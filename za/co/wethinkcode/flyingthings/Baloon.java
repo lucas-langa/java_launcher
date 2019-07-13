@@ -27,7 +27,7 @@ public class Baloon extends Aircraft implements Flyable {
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 15);
 		}
 		System.out.println("To these: " + this.coordinates );
-		System.out.println( "Updating balloon conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
+		System.out.println( "Updating baloon " + this.name + " conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
 		return ;
 	}
 	

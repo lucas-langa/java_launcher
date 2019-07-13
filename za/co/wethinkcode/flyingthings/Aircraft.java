@@ -10,7 +10,6 @@ public abstract class Aircraft{
 		this.id = this.nextId();
 		this.name = name;
 		this.coordinates = coordinates;
-		System.out.println("new Aircraft Spawned" + this.name );
 		return ;
 	}
 
