@@ -52,15 +52,15 @@ public class Simulator {
         return (res);
     }
 	public static void 	main(String [] args) throws Exception {
-		if ( args[0].length() > 0 ) {
+		if ( args.length == 1 ) {
 			try{
-
 					String data = Simulator.readStuff( args[0] );
 					try {
-						File filename = new File("simulation.txt");
+						File filename = new File("./simulation.txt");
 						filename.createNewFile();
 						if ( filename.exists() && filename.isFile() )
 						{
+							Simulator.writer = new PrintWriter( filename );
 							ArrayList<String> strings = new ArrayList<String>();
 							String[] lines = data.split("\n", 0);
 							String []temp;
@@ -71,9 +71,9 @@ public class Simulator {
 							int []flyDigits = new int[3];
 							String AircraftName = new String("");
 							String Aircraft = new String("");
-							WeatherTower W = new WeatherTower();
 							ArrayList<Flyable> F = new ArrayList<Flyable>();
 							Coordinates place;
+							WeatherTower W = new WeatherTower();
 							for ( String listItem : strings ) {
 								temp = listItem.split( " ", 0 );
 								Aircraft = Simulator.AircraftValidator( temp );
@@ -84,13 +84,11 @@ public class Simulator {
 							}
 							for ( Flyable  vehicles : F) {
 								System.out.println(vehicles);
-								try {
-									vehicles.registerTower( W );
-									vehicles.updateConditions();
-								} catch (NullPointerException e){
-									System.out.println(e.getMessage());
-								}
+								vehicles.registerTower( W );
+								vehicles.updateConditions();
 							}
+							Simulator.writer.flush();
+							Simulator.writer.close();
 						}
 						}catch(IOException e) {
 							System.out.println( e.getMessage() );

@@ -1,0 +1,39 @@
+B1#1 registered to weather tower
+Tower saysB1#1 registered to tower
+changing from these Coordinates:  Latitude 3 Longitude 2 Height 20
+To these: Latitude 3 Longitude 2 Height 5
+Updating baloon B1 conditions from SNOW to FOG
+B2#2 registered to weather tower
+Tower saysB2#2 registered to tower
+changing from these Coordinates:  Latitude 8 Longitude 1 Height 66
+To these: Latitude 8 Longitude 1 Height 63
+Updating baloon B2 conditions from FOG to SNOW
+J1#3 registered to weather tower
+changing from these Coordinates:  Latitude 44 Longitude 23 Height 32
+To these: Latitude 44 Longitude 23 Height 25
+Updating JetPlane J1 conditions from SNOW to FOG
+H1#4 registered to weather tower
+changing from these Coordinates:  Latitude 33 Longitude 654 Height 20
+To these: Latitude 33 Longitude 655 Height 20
+Updating Helicopter H1 conditions from FOG to SNOW
+H2#5 registered to weather tower
+changing from these Coordinates:  Latitude 33 Longitude 22 Height 44
+To these: Latitude 33 Longitude 23 Height 44
+Updating Helicopter H2 conditions from FOG to SUN
+H3#6 registered to weather tower
+changing from these Coordinates:  Latitude 68 Longitude 98 Height 99
+To these: Latitude 68 Longitude 99 Height 99
+Updating Helicopter H3 conditions from FOG to RAIN
+B3#7 registered to weather tower
+Tower saysB3#7 registered to tower
+changing from these Coordinates:  Latitude 22 Longitude 102 Height 34
+To these: Latitude 22 Longitude 102 Height 19
+Updating baloon B3 conditions from SNOW to RAIN
+J2#8 registered to weather tower
+changing from these Coordinates:  Latitude 99 Longitude 11 Height 768
+To these: Latitude 100 Longitude 11 Height 768
+Updating JetPlane J2 conditions from FOG to FOG
+H4#9 registered to weather tower
+changing from these Coordinates:  Latitude 23 Longitude 223 Height 54
+To these: Latitude 23 Longitude 223 Height 42
+Updating Helicopter H4 conditions from SNOW to RAIN
