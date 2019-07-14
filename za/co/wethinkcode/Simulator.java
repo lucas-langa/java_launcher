@@ -1,5 +1,4 @@
 package za.co.wethinkcode;
-import za.co.wethinkcode.flyingthings.Coordinates;
 import za.co.wethinkcode.Flyable;
 import za.co.wethinkcode.flyingthings.AircraftFactory;
 import za.co.wethinkcode.weather.WeatherTower;
@@ -53,49 +52,56 @@ public class Simulator {
     }
 	public static void 	main(String [] args) throws Exception {
 		if ( args.length == 1 ) {
+
 			try{
-					String data = Simulator.readStuff( args[0] );
-					try {
-						File filename = new File("./simulation.txt");
-						filename.createNewFile();
-						if ( filename.exists() && filename.isFile() )
-						{
-							Simulator.writer = new PrintWriter( filename );
-							ArrayList<String> strings = new ArrayList<String>();
-							String[] lines = data.split("\n", 0);
-							String []temp;
-							for ( String aircraft  : lines )
-								strings.add( aircraft );
-							Integer.parseInt(lines[0]);
-							strings.remove(0);
-							int []flyDigits = new int[3];
-							String AircraftName = new String("");
-							String Aircraft = new String("");
-							ArrayList<Flyable> F = new ArrayList<Flyable>();
-							Coordinates place;
-							WeatherTower W = new WeatherTower();
-							for ( String listItem : strings ) {
-								temp = listItem.split( " ", 0 );
-								Aircraft = Simulator.AircraftValidator( temp );
-								AircraftName = Simulator.NameValidator( temp[1] );
-								flyDigits = Simulator.CoordinatesValidator( temp );
-								place = new Coordinates( flyDigits[0] , flyDigits[1], flyDigits[2] );
-								F.add( AircraftFactory.newAircraft( Aircraft, AircraftName, place.getLongitude(), place.getLatitude(), place.getHeight()) );
-							}
-							for ( Flyable  vehicles : F) {
-								System.out.println(vehicles);
-								vehicles.registerTower( W );
-								vehicles.updateConditions();
-							}
-							Simulator.writer.flush();
-							Simulator.writer.close();
+				String data = Simulator.readStuff( args[0] );
+				try {
+					File filename = new File("./simulation.txt");
+					filename.createNewFile();
+					if ( filename.exists() && filename.isFile() )
+					{
+						Simulator.writer = new PrintWriter( filename );
+						ArrayList<String> strings = new ArrayList<String>();
+						String[] lines = data.split("\n", 0);
+						String []temp;
+						for ( String aircraft  : lines )
+							strings.add( aircraft );
+						Simulator.runSim = Integer.parseInt(lines[0]);
+						strings.remove(0);
+						int []flyDigits = new int[3];
+						String AircraftName = new String("");
+						String Aircraft = new String("");
+						ArrayList<Flyable> F = new ArrayList<Flyable>();
+						WeatherTower W = new WeatherTower();
+						for ( String listItem : strings ) {
+							temp = listItem.split( " ", 0 );
+							Aircraft = Simulator.AircraftValidator( temp );
+							AircraftName = Simulator.NameValidator( temp[1] );
+							flyDigits = Simulator.CoordinatesValidator( temp );
+							F.add( AircraftFactory.newAircraft( Aircraft, AircraftName,  flyDigits[0] , flyDigits[1], flyDigits[2]) );
 						}
-						}catch(IOException e) {
+						for ( Flyable  vehicles : F) {
+							vehicles.registerTower( W );
+							vehicles.landing( W );
+						}
+						while ( Simulator.runSim-- > 0){
+							W.changeWeather();
+							for ( Flyable  vehicles : F) {
+								vehicles.updateConditions( );
+								vehicles.landing( W );
+							}
+						}
+						Simulator.writer.flush();
+						Simulator.writer.close();
+					}
+					}catch(IOException e) {
 							System.out.println( e.getMessage() );
 						}	
-				} catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e) {
 					System.out.println( e.getMessage() );
-				}
-				}
+			}
+			runSim--;
+		}
 	}
 }
+

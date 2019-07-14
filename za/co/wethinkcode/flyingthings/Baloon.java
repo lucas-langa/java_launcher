@@ -35,7 +35,11 @@ public class Baloon extends Aircraft implements Flyable {
 	public void 	registerTower( WeatherTower  weatherTower ) {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register( this );
-		Simulator.writer.println("Tower says" + this + " registered to tower");
 		return ;
+	}
+	public 	void	landing( WeatherTower weatherTower ) {
+		if ( coordinates.getHeight() <= 0 ) {
+			weatherTower.unregister( this );
+		}
 	}
 }

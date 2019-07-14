@@ -11,7 +11,7 @@ public abstract class Tower {
 		if ( !(this.observers.contains( flyable )) )
 		{
 			this.observers.add( flyable );
-			Simulator.writer.println( flyable + " registered to weather tower");
+			Simulator.writer.println("Tower says " + flyable + " registered to tower");
 		}
 		return ;
 	}
@@ -19,12 +19,10 @@ public abstract class Tower {
 	public void		unregister( Flyable flyable ) {
 		if ( this.observers.contains( flyable )) {
 			this.observers.remove( flyable );
-			Simulator.writer.println( flyable + " unregistered to weather tower");
-		}
+			Simulator.writer.println("Tower says " + flyable + " unregistered from tower");		}
 		else {
-			Simulator.writer.println("I see none of this kind registered to the Tower");
+			Simulator.writer.println("Tower says I see none of this kind registered to the Tower");
 		}
-
 		return ;
 	}
 

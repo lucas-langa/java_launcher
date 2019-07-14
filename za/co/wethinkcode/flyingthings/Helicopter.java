@@ -35,5 +35,12 @@ public class 	Helicopter extends Aircraft implements Flyable{
 		this.weatherTower = weatherTower;
 		this.weatherTower.register( this );
 		return ;
+		
+	}
+
+	public 	void	landing( WeatherTower weatherTower ) {
+		if ( coordinates.getHeight() <= 0 ) {
+			weatherTower.unregister( this );
+		}
 	}
 }
