@@ -6,9 +6,6 @@ import za.co.wethinkcode.Simulator;
 public class 	Helicopter extends Aircraft implements Flyable{
 	private WeatherTower weatherTower;
 
-	/*
-	* constructor later, packages and what not
-	*/
 	Helicopter( String name, Coordinates coordinates ) {
 		super( name, coordinates );
 	}
@@ -27,7 +24,7 @@ public class 	Helicopter extends Aircraft implements Flyable{
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 12);
 		}
 		Simulator.writer.println("To these: " + this.coordinates );
-		Simulator.writer.println( "Updating Helicopter " + this.name + " conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
+		Simulator.writer.println( "Helicopter " + this + " changing conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
 		return ;
 	}
 
@@ -37,8 +34,11 @@ public class 	Helicopter extends Aircraft implements Flyable{
 		return ;
 		
 	}
-
+	
 	public 	void	landing( WeatherTower weatherTower ) {
+		if ( coordinates.getHeight() >= 100) {
+			coordinates = new Coordinates( coordinates.getLongitude() , coordinates.getLatitude() , 100 );
+		}
 		if ( coordinates.getHeight() <= 0 ) {
 			weatherTower.unregister( this );
 		}

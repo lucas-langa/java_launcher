@@ -6,9 +6,6 @@ import za.co.wethinkcode.Simulator;
 public class Baloon extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 
-	/*
-	* constructor when packages
-	*/
 	Baloon( String name, Coordinates coordinates ) {
 		super( name, coordinates );
 	}
@@ -28,7 +25,7 @@ public class Baloon extends Aircraft implements Flyable {
 			coordinates = new Coordinates( coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 15);
 		}
 		Simulator.writer.println("To these: " + this.coordinates );
-		Simulator.writer.println( "Updating baloon " + this.name + " conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
+		Simulator.writer.println( "Baloon  " + this + " changing conditions from " + currentWeather + " to " + ( currentWeather = weatherTower.getWeather(coordinates) ) );
 		return ;
 	}
 	
@@ -37,7 +34,11 @@ public class Baloon extends Aircraft implements Flyable {
 		this.weatherTower.register( this );
 		return ;
 	}
+
 	public 	void	landing( WeatherTower weatherTower ) {
+		if ( coordinates.getHeight() >= 100) {
+			coordinates = new Coordinates( coordinates.getLongitude() , coordinates.getLatitude() , 100 );
+		}
 		if ( coordinates.getHeight() <= 0 ) {
 			weatherTower.unregister( this );
 		}
